@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const { getMate } = require('../common')
+const { getMate } = require('../helpers')
 
 const InitCodeSchema = new mongoose.Schema({
   code: String,

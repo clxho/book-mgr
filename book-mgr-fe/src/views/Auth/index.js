@@ -13,6 +13,7 @@ import {
 import {
   message
 } from "ant-design-vue"
+import { result } from '@/helpers/utils';
 export default defineComponent({
   components: {
     UserOutlined,
@@ -42,18 +43,14 @@ export default defineComponent({
         return
       }
 
-      const {
-        data
-      } = await auth.register(regForm.account, regForm.password, regForm.inviteCode)
+      const res = await auth.register(regForm.account, regForm.password, regForm.inviteCode)
       // 注册结果放映到前端
-      if (data.code) {
-        message.success(data.msg)
-
-        return
-      } else {
-        message.error(data.msg)
-        return
-      }
+      result(res).
+        success(data => {
+          message.success(data.msg)
+        })
+      
+      
 
 
     }
@@ -76,18 +73,12 @@ export default defineComponent({
         return
       }
 
-      const {
-        data
-      } = await auth.login(loginForm.account, loginForm.password)
+      const res = await auth.login(loginForm.account, loginForm.password)
       // 注册结果放映到前端
-      if (data.code) {
-        message.success(data.msg)
-
-        return
-      } else {
-        message.error(data.msg)
-        return
-      }
+      result(res)
+          .success(data => {
+            message.success(data.msg)
+          })
 
 
     }

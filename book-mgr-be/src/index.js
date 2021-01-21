@@ -7,6 +7,7 @@ const koabody = require('koa-body')
 // 导入注册中间件
 const authRouter = require('./routers/auth/index') 
 const codeRouter = require('./routers/invite-code/index') 
+const bookRouter = require('./routers/book/index') 
 
 
 const app = new koa()
@@ -19,6 +20,8 @@ dbconnect().then(() => {
   // 注册中间件
   app.use(authRouter.routes())
   app.use(codeRouter.routes())
+  app.use(bookRouter.routes())
+
 
   app.listen(3000, () => {
     console.log('服务器连接成功');

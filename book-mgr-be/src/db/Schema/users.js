@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const {getMate} = require('../common')
+const {getMate} = require('../helpers')
 
 const UserSchema = new mongoose.Schema({
   account: String,
